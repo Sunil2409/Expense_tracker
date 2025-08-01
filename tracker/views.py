@@ -15,7 +15,7 @@ def home(request):
             amount = request.POST.get('amount')
             category = request.POST.get('category')
             Expenses.objects.create(title=title, amount=amount, category=category)
-            return redirect('/')
+            return redirect('home')
     
         elif action == 'show':
             show_expenses = True
@@ -40,7 +40,7 @@ def login(request):
             if user is not None:
                 auth_login(request, user)
                 messages.success(request, 'Login Successful !')
-                return redirect('/')
+                return redirect('home')
             else:
                 messages.error(request, 'Invalid Username or Password')
 
